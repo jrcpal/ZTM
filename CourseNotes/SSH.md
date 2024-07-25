@@ -38,3 +38,6 @@ Generates a symmetric key for asymmetrical encryption exchange.
 
 ## Turning SSH into a Server
 
+When creating a .pub, or public key, this can be shared with anyone 
+
+Private key should never be shared 
