@@ -41,3 +41,6 @@ Generates a symmetric key for asymmetrical encryption exchange.
 When creating a .pub, or public key, this can be shared with anyone 
 
 Private key should never be shared 
+
+### Setup SSH on GitHub for Windows
+https://github.com/antonykidis/Setup-ssh-for-github/blob/master/Setup-ssh-on-github.pdf
