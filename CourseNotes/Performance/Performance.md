@@ -51,3 +51,54 @@ Data attached to images, such as location, camera details, etc., take up extra s
 ## Reducing Download Frequency
 
 Beyond reducing file size, we can minimize how often or how many files are sent.
+
+### Critical Render Path
+
+1. **DOM Creation**:
+   - The DOM (Document Object Model) is created once the HTML file is received.
+   - The DOM describes the content of the page.
+
+2. **CSSOM Creation**:
+   - The DOM receives the CSS file.
+   - The DOM also generates a CSS tree model called the CSSOM (CSS Object Model) while the HTML model is being generated.
+
+3. **JavaScript Execution**:
+   - The DOM reads the JavaScript file.
+
+4. **Render Tree Model**:
+   - The browser combines the HTML DOM and CSSOM into a render tree model.
+
+5. **Page Layout and Painting**:
+   - The DOM renders the page layout.
+   - The DOM then paints the page.
+   - Images are downloaded in the background.
+
+### HTML Best Practices
+
+- **CSS Loading**:
+  - Best practice is to send CSS files to the browser as soon as possible.
+  - Delay sending JS files to the browser to give time to create the CSSOM.
+  - Achieve this by linking JS scripts beneath the link to the style sheets.
+
+### CSS Best Practices
+
+- **Render Blocking**:
+  - CSS is render-blocking because the CSSOM needs to complete first to generate the render tree.
+
+- **Techniques to Reduce CSS Loading Time**:
+  - Load only what is needed.
+  - Load 'above the fold': Prioritize content that will be seen first at page load.
+  - Use media queries and attributes to avoid disrupting page load if the screen doesn't match. For example:
+    ```html
+    <link rel="stylesheet" href="./style2.css" media="only screen and (min-width:500px)">
+    ```
+
+### JavaScript Best Practices
+
+- **Using `async`**:
+  - `async` can execute at any time, before the page finishes loading or too late, which can cause errors or a subpar experience.
+  - Best to add `async` to scripts that don't affect the DOM or CSSOM, such as items that don't rely on your code or directly affect user experience.
+  - Use if core functionality requires a JavaScript library.
+
+- **Using `defer`**:
+  - `defer` is similar to `async`, but it will wait to execute until after the HTML has been parsed.
