@@ -61,3 +61,14 @@ Redux simplifies state management by storing state as props in a collective obje
   - **Redux Thunk**: Allows you to write action creators that return a function instead of an action. This is useful for handling asynchronous operations.
   - **Redux Saga**: Uses generator functions to handle side effects in a more manageable way.
   - **Redux Logger**: Logs actions and state changes to the console, useful for debugging.
+
+  
+## Slices (Redux Toolkit)
+
+- **Purpose**:
+  - A slice is a collection of Redux reducer logic and actions for a single feature of your application.
+  - It simplifies the process of writing Redux logic by combining actions and reducers in a single file.
+
+- **Creating a Slice**:
+  - Use the `createSlice` function from Redux Toolkit to create a slice.
+  - Define the initial state, reducers, and actions within the slice.
